@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#f5f7f2">
+    <meta name="description" content="Immediate support options and crisis resources.">
+    <title>SOS support — Mindful</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  </head>
+  <body class="wellness-page sos-page">
+    {% set active_page = "sos" %}
+    {% include "partials/app_nav.html" %}
+    <main class="wellness-main sos-main">
+      <section class="sos-hero">
+        <span class="sos-heart" aria-hidden="true">♡</span>
+        <p class="eyebrow">SUPPORT, RIGHT NOW</p>
+        <h1>You deserve help<br><span>from a real person.</span></h1>
+        <p class="wellness-lede">If you or someone else may be in immediate danger, call your local emergency number now or go to the nearest emergency department.</p>
+        <a class="emergency-cta" href="https://findahelpline.com" target="_blank" rel="noopener noreferrer">Find crisis support in your country <span aria-hidden="true">↗</span></a>
+        <p class="sos-disclaimer">Mindful is not an emergency service and can’t contact help for you.</p>
+      </section>
+
+      <div class="sos-grid">
+        <section class="sos-card crisis-card">
+          <p class="section-label"><span aria-hidden="true">♡</span> TALK TO SOMEONE NOW</p>
+          <h2>Free, confidential support</h2>
+          <p>Find a verified crisis helpline where you are. Call, text, or chat options vary by country.</p>
+          <a class="resource-link" href="https://findahelpline.com" target="_blank" rel="noopener noreferrer">Search Find A Helpline <span aria-hidden="true">↗</span></a>
+          <div class="regional-resources">
+            <p><strong>United States &amp; Canada</strong><span>Call or text <a href="tel:988">988</a></span></p>
+            <p><strong>United Kingdom &amp; Ireland</strong><span>Samaritans: <a href="tel:116123">116 123</a></span></p>
+          </div>
+        </section>
+        <section class="sos-card next-steps-card">
+          <p class="section-label"><span aria-hidden="true">✳</span> ONE STEP AT A TIME</p>
+          <h2>For this next moment</h2>
+          <ol class="safety-steps">
+            <li><span>1</span><p><strong>Move closer to another person</strong>—a trusted friend, family member, neighbor, or staffed public place.</p></li>
+            <li><span>2</span><p><strong>Tell them clearly what’s happening.</strong> You could say, “I’m not feeling safe alone. Can you stay with me?”</p></li>
+            <li><span>3</span><p><strong>Put distance between you and anything you could use to hurt yourself.</strong> Ask someone else to help if possible.</p></li>
+            <li><span>4</span><p><strong>Contact emergency services or a crisis line</strong> if you might act on these thoughts or can’t stay safe.</p></li>
+          </ol>
+        </section>
+      </div>
+      <div class="sos-bottom-note"><span aria-hidden="true">✦</span><p>You don’t need to explain everything perfectly to ask for help. One sentence is enough to start.</p></div>
+      <a class="back-link" href="{{ url_for('home') }}">← Back to my space</a>
+    </main>
+    <footer><span>Take what helps. Leave what doesn’t.</span><span>Made with care <span aria-hidden="true">♡</span></span></footer>
+  </body>
+</html>

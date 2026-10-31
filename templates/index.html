@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#f5f7f2">
+    <meta name="description" content="A gentle space for reflection, emotional wellbeing, and finding support.">
+    <title>Mindful — a little support, when you need it</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <script src="{{ url_for('static', filename='app.js') }}" defer></script>
+  </head>
+  <body>
+    {% set active_page = "home" %}
+    {% include "partials/app_nav.html" %}
+
+    <main>
+      <section class="intro">
+        <p class="eyebrow"><span aria-hidden="true">✳</span> YOUR WELLBEING, AT YOUR PACE</p>
+        <h1>You don’t have to<br><span>figure it all out</span> today.</h1>
+        <p class="intro-copy">A gentle place to pause, check in with yourself, and talk through what’s on your mind.</p>
+      </section>
+
+      <div class="layout">
+        <section class="chat-card" aria-labelledby="chat-title">
+          <div class="card-heading">
+            <div class="companion-avatar" aria-hidden="true">☼</div>
+            <div>
+              <h2 id="chat-title">A listening space</h2>
+              <p>Here with you, without judgment</p>
+            </div>
+            <span class="private-badge"><span aria-hidden="true">◈</span> Private</span>
+          </div>
+
+          <div class="conversation" id="conversation" aria-live="polite" aria-label="Conversation">
+            <div class="message assistant-message">
+              <div class="message-avatar" aria-hidden="true">☼</div>
+              <div class="message-content">
+                <p>Hi, I’m glad you’re here. Whatever’s on your mind, we can take it one step at a time. What feels present for you today?</p>
+                <time>Just now</time>
+              </div>
+            </div>
+          </div>
+
+          <div class="suggestions" aria-label="Conversation starters">
+            <button type="button" class="suggestion">I’m feeling a little overwhelmed</button>
+            <button type="button" class="suggestion">Help me slow down</button>
+            <button type="button" class="suggestion">I just need to talk</button>
+          </div>
+
+          <form id="chat-form" class="composer">
+            <label class="sr-only" for="message-input">Write what’s on your mind</label>
+            <textarea id="message-input" name="message" rows="1" maxlength="2000" placeholder="Write what’s on your mind…" required></textarea>
+            <button class="send-button" type="submit" aria-label="Send message">
+              <span aria-hidden="true">↑</span>
+            </button>
+          </form>
+          <p class="chat-footnote"><span aria-hidden="true">✦</span> This is a supportive tool, not a replacement for professional care.</p>
+        </section>
+
+        <aside class="side-column">
+          <section class="checkin-card" aria-labelledby="checkin-title">
+            <div class="section-label"><span aria-hidden="true">✳</span> A MOMENT FOR YOU</div>
+            <h2 id="checkin-title">How are you<br>feeling right now?</h2>
+            <p class="checkin-copy">There’s no right answer. Just notice what’s here.</p>
+            <div class="mood-options" role="group" aria-label="Choose how you are feeling">
+              <button type="button" class="mood-option" data-mood="great"><span>☀</span> Good</button>
+              <button type="button" class="mood-option" data-mood="okay"><span>◡</span> Okay</button>
+              <button type="button" class="mood-option" data-mood="low"><span>☁</span> Low</button>
+              <button type="button" class="mood-option" data-mood="anxious"><span>〰</span> Anxious</button>
+              <button type="button" class="mood-option" data-mood="overwhelmed"><span>◌</span> A lot</button>
+            </div>
+            <label class="consent-row">
+              <input id="save-consent" type="checkbox">
+              <span>Save this check-in privately so I can remove it later.</span>
+            </label>
+            <button class="save-checkin" id="save-checkin" type="button" disabled>Save check-in</button>
+            <p class="checkin-status" id="checkin-status" role="status" aria-live="polite"></p>
+          </section>
+
+          <section class="support-card" id="support">
+            <div class="section-label"><span aria-hidden="true">♡</span> YOU’RE NOT ALONE</div>
+            <h2>Need a human<br>to talk to?</h2>
+            <p>Reaching out can be a brave first step. Find free, confidential support in your country.</p>
+            <a class="resource-link" href="https://findahelpline.com" target="_blank" rel="noopener noreferrer">
+              Find a helpline near you <span aria-hidden="true">↗</span>
+            </a>
+            <div class="urgent-note"><span aria-hidden="true">!</span><p>If you’re in immediate danger, contact your local emergency services now. In the U.S. or Canada, call or text <strong>988</strong>.</p></div>
+          </section>
+        </aside>
+      </div>
+
+      <section class="privacy-note">
+        <span class="privacy-icon" aria-hidden="true">◈</span>
+        <p><strong>Your words stay yours.</strong> Chat messages are sent to Gemini to generate replies and are not saved by this app. Mood check-ins are only saved if you choose to, and you can delete them at any time.</p>
+        <button id="delete-checkins" type="button">Delete saved check-ins</button>
+      </section>
+    </main>
+
+    <footer>
+      <span>Take what helps. Leave what doesn’t.</span>
+      <span>Made with care <span aria-hidden="true">♡</span></span>
+    </footer>
+  </body>
+</html>

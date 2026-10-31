@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#f5f7f2">
+    <meta name="description" content="A gentle guided box-breathing exercise.">
+    <title>Box breathing — Mindful</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <script src="{{ url_for('static', filename='breathing.js') }}" defer></script>
+  </head>
+  <body class="wellness-page">
+    {% set active_page = "breathing" %}
+    {% include "partials/app_nav.html" %}
+    <main class="wellness-main breathing-main">
+      <section class="breathing-heading">
+        <p class="eyebrow"><span aria-hidden="true">✳</span> A STEADY RHYTHM</p>
+        <h1>Make a little room<br><span>to breathe.</span></h1>
+        <p class="wellness-lede">Follow the shape at a comfortable pace. You can pause or stop whenever you like.</p>
+      </section>
+
+      <section class="breathing-panel" aria-label="Guided box breathing">
+        <div class="breathing-instructions">
+          <div class="breath-copy">
+            <span class="breath-kicker">BOX BREATHING · 4 ROUNDS</span>
+            <h2>One side at a time.</h2>
+            <p>Breathe gently. There’s no need to take a deep breath or hold it if that feels uncomfortable.</p>
+          </div>
+          <div class="breath-steps" aria-label="Breathing sequence">
+            <div><span class="step-number">01</span><strong>Breathe in</strong><small>4 seconds</small></div>
+            <div><span class="step-number">02</span><strong>Hold gently</strong><small>4 seconds</small></div>
+            <div><span class="step-number">03</span><strong>Breathe out</strong><small>4 seconds</small></div>
+            <div><span class="step-number">04</span><strong>Pause</strong><small>4 seconds</small></div>
+          </div>
+        </div>
+
+        <div class="breath-practice">
+          <div class="breath-visual" id="breath-visual">
+            <div class="breath-orbit"></div>
+            <div class="breath-circle" id="breath-circle">
+              <span class="breath-phase" id="breath-phase">Ready when you are</span>
+              <span class="breath-countdown" id="breath-countdown">4</span>
+            </div>
+          </div>
+          <p class="breath-progress" id="breath-progress">4 rounds · 16 seconds each</p>
+          <p class="sr-only" id="breath-announcement" aria-live="polite">Ready when you are</p>
+          <div class="breath-controls">
+            <button class="primary-cta" id="breath-start" type="button">Begin breathing</button>
+            <button class="secondary-cta" id="breath-reset" type="button" disabled>Start over</button>
+          </div>
+          <p class="breath-safety">If you feel dizzy or uncomfortable, stop and return to your natural breathing.</p>
+        </div>
+      </section>
+
+      <a class="back-link" href="{{ url_for('stress_relief') }}">← Back to stress relief</a>
+    </main>
+    <footer><span>Take what helps. Leave what doesn’t.</span><span>Made with care <span aria-hidden="true">♡</span></span></footer>
+  </body>
+</html>

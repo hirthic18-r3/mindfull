@@ -1,0 +1,19 @@
+<header class="topbar app-topbar">
+  <a class="brand" href="/" aria-label="Mindful home">
+    <span class="brand-mark" aria-hidden="true">m</span>
+    <span>mindful<span class="brand-dot">.</span></span>
+  </a>
+  <nav class="primary-nav" aria-label="Main navigation">
+    <a class="{{ 'active' if active_page == 'home' else '' }}" href="{{ url_for('home') }}">My space</a>
+    <a class="{{ 'active' if active_page == 'stress' else '' }}" href="{{ url_for('stress_relief') }}">Stress relief</a>
+    <a class="{{ 'active' if active_page == 'breathing' else '' }}" href="{{ url_for('breathing') }}">Breathing</a>
+    <a class="nav-sos {{ 'active' if active_page == 'sos' else '' }}" href="{{ url_for('sos') }}"><span aria-hidden="true">♡</span> SOS</a>
+  </nav>
+  <div class="account-nav">
+    <span class="account-greeting">Hi, {{ current_user.name }}</span>
+    <form method="post" action="{{ url_for('logout') }}">
+      <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+      <button class="top-link account-action" type="submit">Sign out</button>
+    </form>
+  </div>
+</header>

@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#f5f7f2">
+    <meta name="description" content="Gentle grounding and stress relief exercises you can try at your own pace.">
+    <title>Stress relief — Mindful</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  </head>
+  <body class="wellness-page">
+    {% set active_page = "stress" %}
+    {% include "partials/app_nav.html" %}
+    <main class="wellness-main">
+      <section class="wellness-hero stress-hero">
+        <div class="hero-copy">
+          <p class="eyebrow"><span aria-hidden="true">✳</span> A SMALL PAUSE FOR YOU</p>
+          <h1>Let’s make this<br><span>moment a little lighter.</span></h1>
+          <p class="wellness-lede">You don’t have to solve everything right now. Choose one gentle reset and take it at your own pace.</p>
+          <a class="primary-cta" href="{{ url_for('breathing') }}">Try a breathing reset <span aria-hidden="true">→</span></a>
+        </div>
+        <div class="hero-art calm-art" aria-hidden="true">
+          <span class="sun-disc"></span><span class="art-leaf leaf-one"></span><span class="art-leaf leaf-two"></span>
+          <span class="art-caption">a moment<br>to exhale</span>
+        </div>
+      </section>
+
+      <section class="practice-section" aria-labelledby="practice-title">
+        <div class="section-intro">
+          <div><p class="eyebrow">GENTLE TOOLS</p><h2 id="practice-title">Pick what feels doable</h2></div>
+          <p>No perfect way to do these. Skip anything that doesn’t feel right.</p>
+        </div>
+        <div class="practice-grid">
+          <article class="practice-card">
+            <div class="practice-icon icon-sage" aria-hidden="true">◉</div>
+            <span class="practice-time">2 MIN</span>
+            <h3>Come back to your senses</h3>
+            <p>A grounding exercise to notice what’s around you, one sense at a time.</p>
+            <details class="practice-details">
+              <summary>Start grounding <span aria-hidden="true">＋</span></summary>
+              <ol>
+                <li>Name 5 things you can see.</li>
+                <li>Notice 4 things you can feel against your body.</li>
+                <li>Listen for 3 things you can hear.</li>
+                <li>Notice 2 things you can smell.</li>
+                <li>Name 1 thing you can taste, or one kind thing you can tell yourself.</li>
+              </ol>
+            </details>
+          </article>
+          <article class="practice-card">
+            <div class="practice-icon icon-peach" aria-hidden="true">↗</div>
+            <span class="practice-time">1 MIN</span>
+            <h3>Unclench & soften</h3>
+            <p>Let your shoulders drop and ease some tension without needing to stretch.</p>
+            <details class="practice-details">
+              <summary>Try a soft reset <span aria-hidden="true">＋</span></summary>
+              <ol>
+                <li>Let your feet rest on the floor, if that feels comfortable.</li>
+                <li>Notice whether your jaw is holding tension; let it soften if you can.</li>
+                <li>Lift your shoulders gently, then let them fall. Skip this if it hurts.</li>
+                <li>Take one unforced breath and notice how your body feels now.</li>
+              </ol>
+            </details>
+          </article>
+          <article class="practice-card">
+            <div class="practice-icon icon-lilac" aria-hidden="true">✎</div>
+            <span class="practice-time">3 MIN</span>
+            <h3>Set down a thought</h3>
+            <p>Give a busy thought a place to land, without having to fix it right away.</p>
+            <details class="practice-details">
+              <summary>Reflect gently <span aria-hidden="true">＋</span></summary>
+              <ol>
+                <li>What’s taking up the most space in my mind right now?</li>
+                <li>Is there one small part I can act on today—or can it wait?</li>
+                <li>What would I say to someone I care about in this moment?</li>
+                <li>You can keep these thoughts private; nothing here is saved.</li>
+              </ol>
+            </details>
+          </article>
+        </div>
+      </section>
+
+      <section class="relaxing-video" aria-labelledby="relaxing-video-title">
+        <div class="video-art" aria-hidden="true"><span>▶</span></div>
+        <div class="video-copy">
+          <p class="eyebrow">A MOMENT TO UNWIND</p>
+          <h2 id="relaxing-video-title">Relaxing video</h2>
+          <p>Settle in, take a breath, and enjoy a calming moment.</p>
+        </div>
+        <a class="video-link" href="https://youtu.be/B9VRvOKKwfs?si=DP5aqak7cVpjzAGm" target="_blank" rel="noopener noreferrer">
+          Watch video <span aria-hidden="true">↗</span>
+        </a>
+      </section>
+
+      <section class="gentle-banner">
+        <span class="banner-star" aria-hidden="true">✳</span>
+        <p><strong>Need more support?</strong> You can talk things through in your listening space, or find a person to talk to.</p>
+        <a href="{{ url_for('home') }}">Go to my space <span aria-hidden="true">→</span></a>
+      </section>
+    </main>
+    <footer><span>Take what helps. Leave what doesn’t.</span><span>Made with care <span aria-hidden="true">♡</span></span></footer>
+  </body>
+</html>
