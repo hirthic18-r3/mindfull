@@ -22,14 +22,25 @@ from werkzeug.security import check_password_hash, generate_password_hash
 
 load_dotenv()
 
+IS_VERCEL = os.getenv("VERCEL") == "1" or os.getenv("VERCEL_ENV") in {
+    "production",
+    "preview",
+}
+IS_PRODUCTION = IS_VERCEL or os.getenv("FLASK_ENV") == "production"
+SECRET_KEY = os.getenv("SECRET_KEY", "").strip()
+if IS_PRODUCTION and len(SECRET_KEY) < 32:
+    raise RuntimeError(
+        "Set SECRET_KEY to the same random value (at least 32 characters) "
+        "in every Vercel environment before deploying."
+    )
+
 app = Flask(__name__)
 app.config["MAX_CONTENT_LENGTH"] = 64 * 1024
-app.config["SECRET_KEY"] = os.getenv("SECRET_KEY") or secrets.token_hex(32)
+app.config["SECRET_KEY"] = SECRET_KEY or secrets.token_hex(32)
 app.config["SESSION_COOKIE_HTTPONLY"] = True
 app.config["SESSION_COOKIE_SAMESITE"] = "Lax"
-app.config["SESSION_COOKIE_SECURE"] = (
-    os.getenv("FLASK_ENV") == "production" or os.getenv("VERCEL") == "1"
-)
+app.config["SESSION_COOKIE_SECURE"] = IS_PRODUCTION
+app.config["SESSION_COOKIE_PATH"] = "/"
 
 GEMINI_API_KEY = os.getenv("GEMINI_API_KEY", "").strip()
 GEMINI_MODEL = os.getenv("GEMINI_MODEL", "gemini-2.5-flash").strip()

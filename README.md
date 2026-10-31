@@ -24,13 +24,13 @@ If account creation fails, use the specific message shown on the form. A credent
 
 ## Deploy to Vercel
 
-Import the project into Vercel and add `SECRET_KEY`, `GEMINI_API_KEY`, `MONGODB_URI`, `MONGODB_USERNAME`, and `MONGODB_PASSWORD` under **Project Settings → Environment Variables**. Optionally add `GEMINI_MODEL` and `MONGODB_DATABASE`. Use a securely generated `SECRET_KEY` and redeploy after setting the variables. Do not put secret values in `vercel.json` or commit `.env`.
+Import the project into Vercel and add `SECRET_KEY`, `GEMINI_API_KEY`, `MONGODB_URI`, `MONGODB_USERNAME`, and `MONGODB_PASSWORD` under **Project Settings → Environment Variables**. Set the same `SECRET_KEY` (at least 32 characters) for every Vercel environment where the app runs; generate one with `python -c "import secrets; print(secrets.token_hex(32))"`. Vercel serverless instances must share it to verify Flask's signed session cookies across requests. Redeploy after setting or changing the value; existing sessions will need to sign in again after a key change. Optionally add `GEMINI_MODEL` and `MONGODB_DATABASE`. Do not put secret values in `vercel.json` or commit `.env`.
 
 ## Privacy and safety
 
 - Chat messages are sent to Google's Gemini API for reply generation. This app does not save chat messages in MongoDB or server-side sessions.
 - Mood check-ins are saved only after the user selects a mood and checks the consent box. They contain the mood, timestamp, and a random browser cookie identifier; they do not include chat text or IP addresses. “Delete saved check-ins” removes records associated with that browser cookie.
-- Account passwords are stored as salted hashes in MongoDB. Authentication uses signed, HTTP-only Flask session cookies. The `.env` file is ignored by git; keep its MongoDB credentials and Gemini API key private. Configure the Flask session secret separately in the environment.
+- Account passwords are stored as salted hashes in MongoDB. Authentication uses signed, HTTP-only Flask session cookies with `SameSite=Lax`; production cookies are secure-only and available to routes under `/`. Vercel requires a stable `SECRET_KEY` configured in Project Settings → Environment Variables. Local development retains an automatically generated fallback when no key is provided. The `.env` file is ignored by git; keep its MongoDB credentials and Gemini API key private.
 - The browser cookie is a convenience identifier, not account authentication. Clearing browser cookies means this app can no longer associate the browser with its previous check-ins.
 - This is a supportive tool, not a therapist, diagnosis, or emergency service. The app displays crisis resources and a basic keyword-triggered safety response; it cannot reliably assess risk. In immediate danger, contact local emergency services or a crisis line.
 
